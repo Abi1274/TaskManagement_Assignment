@@ -24,8 +24,7 @@ This is a Spring MVC web application developed to manage employees and assign ta
 
 ### Task Management
 
-* Create Task
-* Assign Task to Employee
+* Create Task and assign to employee
 * View Task List
 * Edit Task
 * Delete Task
