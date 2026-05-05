@@ -156,20 +156,8 @@ It follows the **MVC architecture** and supports **CRUD operations with database
 - Add search and filter features  
 - Implement pagination  
 - Improve UI using Bootstrap  
-- Add global exception handling  
-- Develop REST APIs  
-
----
-
-# 🎯 Interview Summary
-
-This project demonstrates:
-- Strong understanding of **Core Java concepts**
-- Implementation of **custom data structures**
-- Knowledge of **multithreading and synchronization**
-- Experience in building **web applications using Spring MVC**
-- Integration with **MySQL database**
-
+- Add global exception handling
+ 
 ---
 
 ## 👤 Author
