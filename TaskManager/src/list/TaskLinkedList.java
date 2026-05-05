@@ -4,12 +4,14 @@ import model.Node;
 import model.Task;
 
 public class TaskLinkedList {
+
     private Node head;
     private int size;
 
-    // Add Task (with duplicate check)
+// ADD TASK
     public synchronized void addTask(Task task) {
 
+// Prevent duplicate ID
         if (searchTask(task.getTaskId()) != null) {
             System.out.println("Task ID already exists!");
             return;
@@ -31,8 +33,9 @@ public class TaskLinkedList {
         System.out.println("Task Added Successfully.");
     }
 
-    // Delete Task
+// DELETE TASK
     public synchronized boolean deleteTask(int taskId) {
+
         if (head == null) return false;
 
         if (head.task.getTaskId() == taskId) {
@@ -42,6 +45,7 @@ public class TaskLinkedList {
         }
 
         Node temp = head;
+
         while (temp.next != null && temp.next.task.getTaskId() != taskId) {
             temp = temp.next;
         }
@@ -55,8 +59,9 @@ public class TaskLinkedList {
         return false;
     }
 
-    // Search Task
+ // SEARCH TASK
     public synchronized Task searchTask(int taskId) {
+
         Node temp = head;
 
         while (temp != null) {
@@ -69,24 +74,26 @@ public class TaskLinkedList {
         return null;
     }
 
-    // Display Tasks
+    // DISPLAY TASKS
     public synchronized void displayTasks() {
+
         if (head == null) {
             System.out.println("No tasks available.");
             return;
         }
 
         Node temp = head;
-        System.out.println("Task List:");
 
+        System.out.println("\nTask List:");
         while (temp != null) {
             System.out.println(temp.task);
             temp = temp.next;
         }
     }
 
-    // Reverse Linked List
+// REVERSE LIST
     public synchronized void reverseTasks() {
+
         Node prev = null;
         Node current = head;
         Node next;
@@ -99,23 +106,30 @@ public class TaskLinkedList {
         }
 
         head = prev;
+
         System.out.println("Task list reversed.");
     }
 
-    // Get Count
+// COUNT
     public synchronized int getTaskCount() {
         return size;
     }
 
-    //one thread a time
+//CRITICAL METHOD (Synchronization)
     public synchronized Task getNextPendingTask() {
+
         Node temp = head;
 
         while (temp != null) {
+
             if ("PENDING".equals(temp.task.getStatus())) {
+
+            // Mark immediately to avoid race condition
                 temp.task.setStatus("IN_PROGRESS");
+
                 return temp.task;
             }
+
             temp = temp.next;
         }
 

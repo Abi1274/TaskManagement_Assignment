@@ -2,18 +2,21 @@ package main;
 
 import list.TaskLinkedList;
 import model.Task;
-import Thread.TaskProcessor;
+import thread.TaskProcessor;
 
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         TaskLinkedList taskList = new TaskLinkedList();
         Scanner sc = new Scanner(System.in);
+
         int choice = 0;
 
         do {
+
             System.out.println("\n1. Add Task");
             System.out.println("2. Delete Task");
             System.out.println("3. Search Task");
@@ -26,7 +29,7 @@ public class Main {
                 System.out.print("Enter choice: ");
                 choice = sc.nextInt();
             } catch (Exception e) {
-                System.out.println("Invalid input! Enter numbers only.");
+                System.out.println("Invalid input!");
                 sc.nextLine();
                 continue;
             }
@@ -43,6 +46,7 @@ public class Main {
                         String name = sc.nextLine();
 
                         String priority;
+
                         while (true) {
                             System.out.print("Enter Priority (HIGH/MEDIUM/LOW): ");
                             priority = sc.nextLine().toUpperCase();
@@ -50,7 +54,7 @@ public class Main {
                             if (priority.equals("HIGH") || priority.equals("MEDIUM") || priority.equals("LOW")) {
                                 break;
                             } else {
-                                System.out.println("Invalid priority. Try again.");
+                                System.out.println("Invalid priority!");
                             }
                         }
 
@@ -63,13 +67,13 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("Enter Task ID to delete: ");
+                    System.out.print("Enter Task ID: ");
                     int delId = sc.nextInt();
                     System.out.println(taskList.deleteTask(delId) ? "Task deleted." : "Task not found.");
                     break;
 
                 case 3:
-                    System.out.print("Enter Task ID to search: ");
+                    System.out.print("Enter Task ID: ");
                     int searchId = sc.nextInt();
                     Task t = taskList.searchTask(searchId);
                     System.out.println(t != null ? t : "Task not found.");
