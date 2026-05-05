@@ -1,5 +1,5 @@
-CREATE DATABASE taskmanagement;
-USE taskmanagement;
+CREATE DATABASE taskmanagement_db;
+USE taskmanagement_db;
 
 CREATE TABLE employee (
     employee_id INT PRIMARY KEY AUTO_INCREMENT,
