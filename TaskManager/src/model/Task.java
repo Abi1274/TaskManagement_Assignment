@@ -3,8 +3,8 @@ package model;
 public class Task {
     private int taskId;
     private String taskName;
-    private String priority; // HIGH, MEDIUM, LOW
-    private String status;   // PENDING, IN_PROGRESS, COMPLETED
+    private String priority;
+    private String status;   
 
     public Task(int taskId, String taskName, String priority) {
         this.taskId = taskId;
